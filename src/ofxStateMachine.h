@@ -80,6 +80,7 @@ namespace itg
 			state->setup();
 			ofAddListener(state->changeStateEvent, this, &ofxStateMachine::onChangeState);
 			states.insert(make_pair(state->getName(), state));
+            stateNames.push_back(state->getName());
 			return state;
 		}
         
@@ -96,11 +97,21 @@ namespace itg
 		{
 			return sharedData;
 		}
-		
+        
+        StatePtr& getCurrentState()
+        {
+            return currentState;
+        }
+        
 		map<string, StatePtr> getStates() const
 		{
 			return states;
 		}
+        
+        const vector<string>& getStateNames() const
+        {
+            return stateNames;
+        }
 		
 		void onChangeState(string& stateName)
 		{
@@ -202,6 +213,7 @@ namespace itg
 		StatePtr currentState;
 		map<string, StatePtr > states;
 		SharedData sharedData;
+        vector<string> stateNames;
 	};
 }
 
