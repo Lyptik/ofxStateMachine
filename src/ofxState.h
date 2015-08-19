@@ -49,6 +49,7 @@ namespace itg
 		virtual void setup() {}
 		virtual void update() {}
 		virtual void draw() {}
+        virtual void exit() {}
 		virtual string getName() = 0;
 		
 		virtual void touchDown(ofTouchEventArgs& touch) {}
