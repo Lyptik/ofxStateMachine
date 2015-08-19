@@ -31,18 +31,12 @@
  */
 #pragma once
 
-#ifdef TARGET_WIN32
-#include <memory>
-#else
-#include <tr1/memory>
-#endif
 #include <map>
 #include <string>
 #include <iostream>
 #include "ofxState.h"
 
 using namespace std;
-using namespace tr1;
 
 namespace itg
 {
@@ -50,7 +44,7 @@ namespace itg
 	class ofxStateMachine
 	{
 	public:
-		typedef shared_ptr< ofxState<SharedData> > StatePtr;
+		typedef ofPtr< ofxState<SharedData> > StatePtr;
 		typedef typename map<string, StatePtr>::iterator stateIt;
 		
 		ofxStateMachine()
