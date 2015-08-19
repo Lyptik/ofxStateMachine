@@ -61,6 +61,7 @@ namespace itg
 #else
 			enableMouseEvents();
 			enableKeyEvents();
+            enableDragEvent();
 #endif
 		}
         
@@ -203,10 +204,17 @@ namespace itg
 			ofAddListener(ofEvents().mouseDragged, this, &ofxStateMachine::onMouseDragged);
 		}
 		
+        void enableDragEvent()
+        {
+            ofAddListener(ofEvents().fileDragEvent, this, &ofxStateMachine::onDragEvent);
+        }
+        
 		void onMouseReleased(ofMouseEventArgs& data) { if (currentState) currentState->mouseReleased(data.x, data.y, data.button); }
 		void onMousePressed(ofMouseEventArgs& data) { if (currentState) currentState->mousePressed(data.x, data.y, data.button); }
 		void onMouseMoved(ofMouseEventArgs& data) { if (currentState) currentState->mouseMoved(data.x, data.y); }
 		void onMouseDragged(ofMouseEventArgs& data) { if (currentState) currentState->mouseDragged(data.x, data.y, data.button); }
+        void onDragEvent(ofDragInfo &data) { if (currentState) currentState->dragEvent(data); }
+        
 #endif
 		
 	private:
