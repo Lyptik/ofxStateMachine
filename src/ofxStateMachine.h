@@ -124,7 +124,31 @@ namespace itg
 				currentState->stateEnter();
 			}
 		}
-		
+        
+        /*
+         // WIP !
+         void changeToRandomState()
+        {
+            int iRand = 0;
+            stateIt it = states.begin();
+            
+            do {
+    
+                iRand = std::rand() % states.size(); // randomize
+                it = states.begin + iRand; // Pick up
+                
+            while(it->second != currentState) // Round Robin
+            
+            changeState(it->first());
+        }
+
+        void changeToNextState()
+        {
+            stateIt it = states.begin();
+            // Find a way to pick up next element in map
+            changeState(it->first);
+        }*/
+        
 		/** App Event Stuff **/
 		void enableAppEvents()
 		{
