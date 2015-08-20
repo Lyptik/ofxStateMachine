@@ -33,6 +33,7 @@
 
 #include "ofEvents.h"
 #include "ofMain.h"
+#include "ofxGui.h"
 
 namespace itg
 {
@@ -87,6 +88,8 @@ namespace itg
 		
         SharedData& getSharedData() { return *sharedData; }
 		void setSharedData(SharedData* sharedData) { this->sharedData = sharedData; }
+        
+        ofxPanel gui;
 		
 	private:
 		SharedData* sharedData;
