@@ -125,29 +125,42 @@ namespace itg
 			}
 		}
         
-        /*
-         // WIP !
-         void changeToRandomState()
+        void changeToRandomState()
         {
             int iRand = 0;
             stateIt it = states.begin();
             
             do {
-    
+                it = states.begin();
                 iRand = std::rand() % states.size(); // randomize
-                it = states.begin + iRand; // Pick up
-                
-            while(it->second != currentState) // Round Robin
+                std::advance(it, iRand); // Pick up
+            }
+            while(it->second == currentState); // Round Robin
             
-            changeState(it->first());
+            changeState(it->first);
         }
-
+        
         void changeToNextState()
         {
-            stateIt it = states.begin();
-            // Find a way to pick up next element in map
+            stateIt it = states.find(currentState->getName());
+            // If current state is the last state, go back to the first state
+            if(++it == states.end()){
+                it = states.begin();
+            }
             changeState(it->first);
-        }*/
+        }
+        
+        void changeToPreviousState()
+        {
+            stateIt it = states.find(currentState->getName());
+            // If current state is the first state, go to the last state
+            if(it == states.begin()){
+                std::advance(it, states.size()-1);  // Go to last element in the map
+            } else {
+                --it;
+            }
+            changeState(it->first);
+        }
         
 		/** App Event Stuff **/
 		void enableAppEvents()
