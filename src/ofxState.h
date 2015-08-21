@@ -89,8 +89,12 @@ namespace itg
         SharedData& getSharedData() { return *sharedData; }
 		void setSharedData(SharedData* sharedData) { this->sharedData = sharedData; }
         
+        void drawGui() { if(gui.getNumControls() != 0) gui.draw(); }
+        ofxPanel& getGui() { return gui; }
+    
+    protected:
         ofxPanel gui;
-		
+    
 	private:
 		SharedData* sharedData;
 	};	
